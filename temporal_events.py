@@ -8,7 +8,7 @@ import csv
 from os.path import isfile
 
 
-def tevents(org, dst):
+def tevents(org, dst, delimiter=','):
     """
     Readss pp in org and writes only events pp>0 limited by 0 in the the time
     before and after it
@@ -26,7 +26,7 @@ def tevents(org, dst):
 
     """
     def pp_get(row):
-        return float(row[0].split(',')[2])
+        return float(row[2])
 
 
     if isfile(dst):
@@ -35,8 +35,8 @@ def tevents(org, dst):
             return
 
     with open(org) as fi, open(dst, mode='w', newline='') as fo:
-        reader = csv.reader(fi, delimiter=";")
-        writer = csv.writer(fo, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+        reader = csv.reader(fi, delimiter=",")
+        writer = csv.writer(fo, delimiter=delimiter, quotechar='"', quoting=csv.QUOTE_MINIMAL)
         for nrow, row in enumerate(reader):
             print(nrow)
             if nrow == 0:

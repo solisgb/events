@@ -12,7 +12,6 @@ dst = r'H:\LSGB\20220324_informe_pz\data_chs\saih\pp_mmenor_saih_events.csv'
 if __name__ == "__main__":
 
     try:
-        from datetime import datetime
         from time import time
         import traceback
 
